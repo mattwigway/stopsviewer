@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOPS Report Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1>STOPS Report Viewer</h1>
+      <p class="tagline">View FTA STOPS model output reports as accessible tables. Files are read on your computer and are not uploaded.</p>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="open-area" id="drop-zone" aria-labelledby="open-heading">
+      <h2 id="open-heading" class="visually-hidden">Open report files</h2>
+      <button type="button" id="open-button" class="button button-primary">Open STOPS report files…</button>
+      <input type="file" id="file-input" multiple accept=".txt,.prn,.out,text/plain" hidden>
+      <p id="open-help" class="help-text">Choose one or more STOPS report files, or drag and drop them onto this page. Each file opens in its own tab.</p>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="alert" class="alert" role="alert" hidden></div>
+
+    <div id="workspace" hidden>
+      <div class="tablist-wrap">
+        <div role="tablist" id="tablist" aria-label="Open report files"></div>
+      </div>
+      <p id="tab-help" class="visually-hidden">Use the left and right arrow keys to switch files. Press Delete to close the selected file.</p>
+      <div id="panels"></div>
+    </div>
+
+    <section id="empty-state" class="empty-state" aria-labelledby="empty-heading">
+      <h2 id="empty-heading">No files open</h2>
+      <p>After you open a file, its table of contents is listed by report section. Select any table to view it. Use <strong>Back to table of contents</strong> or press <kbd>Escape</kbd> to close the table and return to the list.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Beta software:</strong> use at your own risk. Always verify results against the original STOPS report files.</p>
+    <p>Built with Claude.</p>
+  </footer>
+
+  <script src="stops-parser.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
